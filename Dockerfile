@@ -1,8 +1,8 @@
-FROM python:3.11-slim-bookworm
+FROM python:3.11-alpine
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache ffmpeg
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
